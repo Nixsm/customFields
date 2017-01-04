@@ -1,6 +1,4 @@
-<h1>Login</h1>
-
-<%= form_for(:session, url: login_path) do |f| %>
+<%= form_for @user do |f| %>
     <p>
       <%= f.label :username %>
       <%= f.text_field :name %>
@@ -9,6 +7,5 @@
       <%= f.label :password %>
       <%= f.password_field :pass %>
     </p>
-    <%= f.submit "Login" %>
+    <%= f.submit %>
 <% end %>
-
