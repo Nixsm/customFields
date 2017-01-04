@@ -3,6 +3,6 @@ class User
   field :name, type: String
   field :pass, type: String
 
-  embeds_many :fields
+  embeds_many :custom_fields
   embeds_many :contacts
 end
