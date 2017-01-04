@@ -1,0 +1,26 @@
+<%= link_to "New Text Field", new_user_custom_field_path(@user, :text_field) %>
+<br>
+<%= link_to "New Text Area", new_user_custom_field_path(@user, :text_area) %>
+
+<br>
+<br>
+<br>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Label</th>
+  </tr>
+  <% @user.custom_fields.each do |field, type| %>
+      <tr>
+        <td>
+          <%= type %>
+        </td>
+        <td>
+          <%= field %>
+        </td>
+      </tr>
+  <% end %>
+
+</table>
+
