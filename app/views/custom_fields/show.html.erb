@@ -1,6 +1,8 @@
-<%= link_to "New Text Field", new_user_custom_field_path(@user, :text_field) %>
+<%= link_to 'New Text Field', new_user_custom_field_path(@user, :text_field) %>
 <br>
-<%= link_to "New Text Area", new_user_custom_field_path(@user, :text_area) %>
+<%= link_to 'New Text Area', new_user_custom_field_path(@user, :text_area) %>
+<br>
+<%= link_to 'New Combo box', new_user_custom_field_path(@user, :combo_box) %>
 
 <br>
 <br>
@@ -8,19 +10,30 @@
 
 <table>
   <tr>
-    <th>Type</th>
     <th>Label</th>
+    <th>Type</th>
+    <th>Data</th>
   </tr>
   <% @user.custom_fields.each do |field, type| %>
       <tr>
         <td>
-          <%= type %>
-        </td>
-        <td>
           <%= field %>
         </td>
+          <% if type.kind_of? Array %>
+            <td>
+              combo_box
+            </td>
+            <td>
+              <%= type.join ', ' %>
+            </td>
+          <% else %>
+            <td>
+              <%= type %>
+            </td>
+          <% end %>
       </tr>
   <% end %>
 
 </table>
 
+<%= link_to 'Back', @user %>

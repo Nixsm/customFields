@@ -11,4 +11,22 @@
     <% end %>
 <% end %>
 
+<% if @type.eql? 'combo_box' %>
+    Usage: each line should contain an option
+    <%= form_for :custom_field, url: user_custom_fields_path do |f| %>
+        <p>
+          <%= f.label :input_label %>
+          <br>
+          <%= f.text_field :input_label %>
+        </p>
+        <p>
+          <%= f.label :input_options %>
+          <br>
+          <%= f.text_area :input %>
+        </p>
+        <%= f.hidden_field :field_type, {:value => @type} %>
+        <%= f.submit 'Add Field' %>
+    <% end %>
+<% end %>
+
 <%= link_to 'Back', @user %>

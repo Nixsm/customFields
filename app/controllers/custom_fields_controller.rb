@@ -18,9 +18,23 @@ class CustomFieldsController < ApplicationController
 
     local_params = params[:custom_field]
     field_type = local_params[:field_type]
+
+    puts field_type
     if field_type.eql? 'text_field' or field_type.eql? 'text_area'
       field_name = params[:custom_field][:input_label]
       @user.custom_fields[field_name] = field_type
+      if @user.save
+        redirect_to @user
+      end
+    end
+
+    if field_type.eql? 'combo_box'
+      field_name = params[:custom_field][:input_label]
+      # split by \r\n separator which is a new line in the text_area
+      input = local_params[:input].split /[\r\n]+/
+
+      @user.custom_fields[field_name] = input
+
       if @user.save
         redirect_to @user
       end
