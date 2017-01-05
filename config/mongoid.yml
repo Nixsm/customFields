@@ -1,8 +1,9 @@
 production:
   clients:
-    uri: mongodb://heroku_ttzftlmb:ia1l7c4ktf4k4moh42i1vs76mi@ds157078.mlab.com:57078/heroku_ttzftlmb
-    options:
-      connect_timeout: 15
+    default:
+      uri: mongodb://heroku_ttzftlmb:ia1l7c4ktf4k4moh42i1vs76mi@ds157078.mlab.com:57078/heroku_ttzftlmb
+      options:
+        connect_timeout: 15
 
 development:
   clients:
