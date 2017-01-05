@@ -5,4 +5,4 @@ Hello, <%= @user.name %>
 <br>
 <%= link_to 'Fields', user_custom_field_path(@user) %>
 <br>
-<%= link_to 'Contacts', user_contact_path(@user) %>
+<%= link_to 'Contacts', new_user_contact_path(@user) %>

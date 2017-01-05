@@ -1,2 +1,28 @@
 <h1>Contacts#new</h1>
 <p>Find me in app/views/contacts/new.html.erb</p>
+
+
+<%= form_for :contact, url: user_contacts_path do |f| %>
+    <p>
+      <%= f.label :email %>
+      <br>
+      <%= f.text_field :email %>
+    </p>
+    <% @user.custom_fields.each do |name, value| %>
+        <p>
+          <!--This will make any names containing space work as a symbol-->
+          <% parameterized_label = name.parameterize.underscore.to_sym %>
+          <%= f.label parameterized_label %>
+          <br>
+          <% if value.eql? 'text_field' %>
+            <%= f.text_field parameterized_label %>
+          <% elsif value.eql? 'text_area' %>
+            <%= f.text_area parameterized_label %>
+          <% elsif value.kind_of? Array %>
+              <%= f.select parameterized_label, options_for_select(value) %>
+          <% end %>
+          <br>
+        </p>
+    <% end %>
+    <%= f.submit 'Register Contact' %>
+<% end %>
