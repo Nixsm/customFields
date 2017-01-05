@@ -1,24 +1,16 @@
-# README
+# Custom Fields
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System dependencies
+* Ruby 2.4.0
+* Mongodb 3.4.0
 
-Things you may want to cover:
+## Getting it up and running
 
-* Ruby version
+```
+git clone https://github.com/Nixsm/customFields.git
+cd customFields/
+bundle install
+bin/rails server
+```
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
