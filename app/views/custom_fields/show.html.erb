@@ -8,32 +8,34 @@
 <br>
 <br>
 
-<table>
-  <tr>
-    <th>Label</th>
-    <th>Type</th>
-    <th>Data</th>
-  </tr>
-  <% @user.custom_fields.each do |field, type| %>
+<% if not @user.custom_fields.nil? %>
+    <table>
       <tr>
-        <td>
-          <%= field %>
-        </td>
-          <% if type.kind_of? Array %>
-            <td>
-              combo_box
-            </td>
-            <td>
-              <%= type.join ', ' %>
-            </td>
-          <% else %>
-            <td>
-              <%= type %>
-            </td>
-          <% end %>
+        <th>Label</th>
+        <th>Type</th>
+        <th>Data</th>
       </tr>
-  <% end %>
+      <% @user.custom_fields.each do |field, type| %>
+          <tr>
+            <td>
+              <%= field %>
+            </td>
+            <% if type.kind_of? Array %>
+                <td>
+                  combo_box
+                </td>
+                <td>
+                  <%= type.join ', ' %>
+                </td>
+            <% else %>
+                <td>
+                  <%= type %>
+                </td>
+            <% end %>
+          </tr>
+      <% end %>
 
-</table>
+    </table>
+<% end %>
 
 <%= link_to 'Back', @user %>

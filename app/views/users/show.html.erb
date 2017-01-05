@@ -4,24 +4,30 @@
 <%= link_to 'New Contact', new_user_contact_path(@user) %>
 <br>
 <br>
-<table>
-  <thead>
-  <th>Email</th>
-  <% @user.custom_fields.each do |name, _| %>
-    <th>
-      <%= name %>
-    </th>
-  <% end %>
-  </thead>
+<!--If we have contacts display them-->
+<% if @user.contacts.kind_of? Array and not @user.custom_fields.nil? %>
+    <table>
+      <thead>
+      <th>Email</th>
+      <% @user.custom_fields.each do |name, _| %>
+          <th>
+            <%= name %>
+          </th>
+      <% end %>
+      </thead>
 
-  <% @user.contacts.each do |contact| %>
-      <tr>
-        <% attribute_keys = contact.attributes.keys - ['_id']%>
-        <% attribute_keys.each do |key| %>
-          <td>
-            <%= contact.attributes[key] %>
-          </td>
-        <%end%>
-      </tr>
-  <% end %>
-</table>
+      <% @user.contacts.each do |contact| %>
+          <tr>
+            <% attribute_keys = contact.attributes.keys - ['_id']%>
+            <% attribute_keys.each do |key| %>
+                <td>
+                  <%= contact.attributes[key] %>
+                </td>
+            <%end%>
+          </tr>
+      <% end %>
+    </table>
+<% end %>
+
+<br>
+<%= link_to 'Logout', login_path %>

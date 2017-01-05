@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
       redirect_to user and return
     end
 
-    # TODO handle error
     render 'new'
   end
 
