@@ -1,7 +1,4 @@
 class ContactsController < ApplicationController
-  def show
-  end
-
   def new
     @user = User.find(params[:user_id])
 
@@ -10,7 +7,7 @@ class ContactsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
 
-    @user.contacts ||=
+    @user.contacts ||= []
 
     contact_params = params[:contact]
 
@@ -20,8 +17,12 @@ class ContactsController < ApplicationController
       contact[param] = value
     end
 
+    @user.contacts.push(contact)
 
+    if @user.save
+      redirect_to @user and return
+    end
 
-    render plain: contact.inspect
+    render 'new'
   end
 end
